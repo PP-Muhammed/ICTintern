@@ -2,12 +2,14 @@
 var express = require("express")
 require('./connection')
 var empModel = require('./models/employee')
+var cors=require("cors")
 
 //initialize
 var app = express()
 
 //middleware
 app.use(express.json())
+app.use(cors())
 
 
 //api creation

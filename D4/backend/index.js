@@ -12,6 +12,7 @@ app.use(express.json())
 app.use(cors())
 
 
+
 //api creation
 app.get('/details', (req, res) => {
     res.send("employee app")
@@ -21,7 +22,7 @@ app.get('/details', (req, res) => {
 app.post('/add', async(req, res) => {
     try {
         await empModel(req.body).save()
-        console.log('data added')
+        res.send({ message:"data added"})
     } catch (error) {
         console.log(error)
     }
@@ -37,7 +38,7 @@ app.get('/view', async (req, res) => {
 app.delete('/delete/:id', async (req, res) => {
     try {
         await empModel.findByIdAndDelete(req.params.id)
-        res.send("Employee deleted successfully")
+        res.send({ message: "Employee deleted successfully" })
     } catch (error) {
         console.log(error)
     }
